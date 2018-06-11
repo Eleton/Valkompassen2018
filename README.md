@@ -2,9 +2,9 @@
 Aimans Valkompass, förmodligen den exaktaste kompassen i år!
 
 ## ToDo
-- [ ] Lägga till ett par frågor till
-- [ ] Mobilanpassning
-- [ ] Snyggare färger och typsnitt
+- [x] Lägga till ett par frågor till
+- [x] Mobilanpassning
+- [x] Snyggare färger och typsnitt
 - [ ] Animationer
 - [ ] Knapp för att dela på Facebook
 - [ ] Ett litet meddelande om att sidan inte använder sig av cookies
