@@ -18,7 +18,13 @@ model = Model content []
 
 
 content : List (Html Msg)
-content = [ frontBox, questionBox question1, questionBox question2 ]
+content =
+  [ frontBox
+  , questionBox question1
+  , questionBox question2
+  , questionBox question3
+  , questionBox question4
+  ]
 
 type alias Question =
   { question : String
@@ -48,6 +54,20 @@ question2 =
     "Vilket av följande personlighetsdrag anser du är osexigast hos en partner?"
     (Answer Left "Girighet")
     (Answer Right "Lathet")
+
+question3 : Question
+question3 =
+  Question
+    "På vinden så har du flera tidsskriftshållare fyllda med..."
+    (Answer Left "Bamse - Världens snällaste björn")
+    (Answer Right "Don Rosas samlade verk")
+
+question4 : Question
+question4 =
+  Question
+    "Vilken sida tänkte du lägga din röst på i valet 9:e september?"
+    (Answer Left "Vänstern")
+    (Answer Right "Högern")
 
 blue : String
 blue = "rgb(0, 106, 179)"
@@ -102,6 +122,7 @@ resultBox : List Ideology -> Html Msg
 resultBox result =
   div [ box ]
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  , div [ boxContainer ] [(resultToBar result)]
   , Html.h2 [ h2Style ] [ text (resultToText result) ]
   , div [ boxContainer ]
     [ button [ onClick Redo, buttonStyle "green" ] [ text "Gör om" ]
@@ -128,14 +149,37 @@ questionBox q =
 
 resultToText : List Ideology -> String
 resultToText list =
-  case list of
-    [ Left, Left ] ->
+  case (sortIdeology list) of
+    [ Left, Left, Left, Left ] ->
       "Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S."
-    [ Right, Right ] ->
-      "Du är uppenbart genomblå! Aimans Valkompass föreslår därför att du lägger din röst på något av Allianspartierna."
-    _ ->
+    [ Left, Left, Left, Right ] ->
+      "Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP kan ju vara en grej, men en proteströst på V kan också gå hem."
+    [ Left, Left, Right, Right ] ->
       "Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra."
+    [ Left, Right, Right, Right ] ->
+      "Du är lika blå som röda havet. C, M och Birgitta Ohlsson-L skulle kunna vara ett nyktert val för din del."
+    [ Right, Right, Right, Right ] ->
+      "Du är uppenbart genomblå! Alliansen har allt som du någonsin kan önska."
+    _ ->
+      "Data saknas för att kunna avgöra din politiska hållning."
 
+resultToBar : List Ideology -> Html Msg
+resultToBar list =
+  div [ ideologyBar ] (List.map
+    (\x -> if x == Left
+      then div [ style [ ("background-color", red) , ("height", "100%"), ("flex", "1") ] ] []
+      else div [ style [ ("background-color", blue), ("height", "100%"), ("flex", "1") ] ] []
+      ) (sortIdeology list)
+    )
+
+sortIdeology : List Ideology -> List Ideology
+sortIdeology list =
+  case list of
+    [] -> []
+    Left :: tail ->
+      Left :: sortIdeology tail
+    Right :: tail ->
+      (sortIdeology tail) ++ [Right]
 
 -- STYLE
 
@@ -205,4 +249,12 @@ h2Style =
     [ ("font-size", "3.5vh")
     , ("flex", "5")
     , ("font-family", "arial,sans-serif")
+    ]
+
+ideologyBar =
+  style
+    [ ("width", "15em")
+    , ("height", "2em")
+    , ("border", "1px solid black")
+    , ("display", "flex")
     ]

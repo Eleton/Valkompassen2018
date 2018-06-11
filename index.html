@@ -8231,6 +8231,24 @@ var _elm_lang$html$Html_Events$Options = F2(
 	function (a, b) {
 		return {stopPropagation: a, preventDefault: b};
 	});
+var _user$project$Main$ideologyBar = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '15em'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '2em'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid black'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$Main$h2Style = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
@@ -8425,30 +8443,6 @@ var _user$project$Main$container = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Main$resultToText = function (list) {
-	var _p0 = list;
-	_v0_2:
-	do {
-		if (_p0.ctor === '::') {
-			if (_p0._0.ctor === 'Left') {
-				if (((_p0._1.ctor === '::') && (_p0._1._0.ctor === 'Left')) && (_p0._1._1.ctor === '[]')) {
-					return 'Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S.';
-				} else {
-					break _v0_2;
-				}
-			} else {
-				if (((_p0._1.ctor === '::') && (_p0._1._0.ctor === 'Right')) && (_p0._1._1.ctor === '[]')) {
-					return 'Du är uppenbart genomblå! Aimans Valkompass föreslår därför att du lägger din röst på något av Allianspartierna.';
-				} else {
-					break _v0_2;
-				}
-			}
-		} else {
-			break _v0_2;
-		}
-	} while(false);
-	return 'Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra.';
-};
 var _user$project$Main$red = 'rgb(237, 27, 52)';
 var _user$project$Main$blue = 'rgb(0, 106, 179)';
 var _user$project$Main$Model = F2(
@@ -8475,6 +8469,154 @@ var _user$project$Main$question2 = A3(
 	'Vilket av följande personlighetsdrag anser du är osexigast hos en partner?',
 	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Girighet'),
 	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Lathet'));
+var _user$project$Main$question3 = A3(
+	_user$project$Main$Question,
+	'På vinden så har du flera tidsskriftshållare fyllda med...',
+	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Bamse - Världens snällaste björn'),
+	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Don Rosas samlade verk'));
+var _user$project$Main$question4 = A3(
+	_user$project$Main$Question,
+	'Vilken sida tänkte du lägga din röst på i valet 9:e september?',
+	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Vänstern'),
+	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Högern'));
+var _user$project$Main$sortIdeology = function (list) {
+	var _p0 = list;
+	if (_p0.ctor === '[]') {
+		return {ctor: '[]'};
+	} else {
+		if (_p0._0.ctor === 'Left') {
+			return {
+				ctor: '::',
+				_0: _user$project$Main$Left,
+				_1: _user$project$Main$sortIdeology(_p0._1)
+			};
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				_user$project$Main$sortIdeology(_p0._1),
+				{
+					ctor: '::',
+					_0: _user$project$Main$Right,
+					_1: {ctor: '[]'}
+				});
+		}
+	}
+};
+var _user$project$Main$resultToText = function (list) {
+	var _p1 = _user$project$Main$sortIdeology(list);
+	_v1_5:
+	do {
+		if (_p1.ctor === '::') {
+			if (_p1._0.ctor === 'Left') {
+				if (_p1._1.ctor === '::') {
+					if (_p1._1._0.ctor === 'Left') {
+						if (_p1._1._1.ctor === '::') {
+							if (_p1._1._1._0.ctor === 'Left') {
+								if (_p1._1._1._1.ctor === '::') {
+									if (_p1._1._1._1._0.ctor === 'Left') {
+										if (_p1._1._1._1._1.ctor === '[]') {
+											return 'Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S.';
+										} else {
+											break _v1_5;
+										}
+									} else {
+										if (_p1._1._1._1._1.ctor === '[]') {
+											return 'Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP kan ju vara en grej, men en proteströst på V kan också gå hem.';
+										} else {
+											break _v1_5;
+										}
+									}
+								} else {
+									break _v1_5;
+								}
+							} else {
+								if (((_p1._1._1._1.ctor === '::') && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
+									return 'Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra.';
+								} else {
+									break _v1_5;
+								}
+							}
+						} else {
+							break _v1_5;
+						}
+					} else {
+						if (((((_p1._1._1.ctor === '::') && (_p1._1._1._0.ctor === 'Right')) && (_p1._1._1._1.ctor === '::')) && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
+							return 'Du är lika blå som röda havet. C, M och Birgitta Ohlsson-L skulle kunna vara ett nyktert val för din del.';
+						} else {
+							break _v1_5;
+						}
+					}
+				} else {
+					break _v1_5;
+				}
+			} else {
+				if (((((((_p1._1.ctor === '::') && (_p1._1._0.ctor === 'Right')) && (_p1._1._1.ctor === '::')) && (_p1._1._1._0.ctor === 'Right')) && (_p1._1._1._1.ctor === '::')) && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
+					return 'Du är uppenbart genomblå! Alliansen har allt som du någonsin kan önska.';
+				} else {
+					break _v1_5;
+				}
+			}
+		} else {
+			break _v1_5;
+		}
+	} while(false);
+	return 'Data saknas för att kunna avgöra din politiska hållning.';
+};
+var _user$project$Main$resultToBar = function (list) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Main$ideologyBar,
+			_1: {ctor: '[]'}
+		},
+		A2(
+			_elm_lang$core$List$map,
+			function (x) {
+				return _elm_lang$core$Native_Utils.eq(x, _user$project$Main$Left) ? A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$red},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}) : A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$blue},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'});
+			},
+			_user$project$Main$sortIdeology(list)));
+};
 var _user$project$Main$Redo = {ctor: 'Redo'};
 var _user$project$Main$resultBox = function (result) {
 	return A2(
@@ -8501,48 +8643,63 @@ var _user$project$Main$resultBox = function (result) {
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$h2,
+					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Main$h2Style,
+						_0: _user$project$Main$boxContainer,
 						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							_user$project$Main$resultToText(result)),
+						_0: _user$project$Main$resultToBar(result),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$div,
+						_elm_lang$html$Html$h2,
 						{
 							ctor: '::',
-							_0: _user$project$Main$boxContainer,
+							_0: _user$project$Main$h2Style,
 							_1: {ctor: '[]'}
 						},
 						{
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$button,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Redo),
-									_1: {
-										ctor: '::',
-										_0: _user$project$Main$buttonStyle('green'),
-										_1: {ctor: '[]'}
-									}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Gör om'),
-									_1: {ctor: '[]'}
-								}),
+							_0: _elm_lang$html$Html$text(
+								_user$project$Main$resultToText(result)),
 							_1: {ctor: '[]'}
 						}),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Main$boxContainer,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$button,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Redo),
+										_1: {
+											ctor: '::',
+											_0: _user$project$Main$buttonStyle('green'),
+											_1: {ctor: '[]'}
+										}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Gör om'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
@@ -8739,7 +8896,15 @@ var _user$project$Main$content = {
 		_1: {
 			ctor: '::',
 			_0: _user$project$Main$questionBox(_user$project$Main$question2),
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: _user$project$Main$questionBox(_user$project$Main$question3),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Main$questionBox(_user$project$Main$question4),
+					_1: {ctor: '[]'}
+				}
+			}
 		}
 	}
 };
@@ -8749,8 +8914,8 @@ var _user$project$Main$model = A2(
 	{ctor: '[]'});
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p1 = msg;
-		switch (_p1.ctor) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
 			case 'Reset':
 				return model;
 			case 'AddAnswer':
@@ -8760,7 +8925,7 @@ var _user$project$Main$update = F2(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{
-							result: {ctor: '::', _0: _p1._0, _1: model.result},
+							result: {ctor: '::', _0: _p2._0, _1: model.result},
 							content: A2(
 								_elm_lang$core$Maybe$withDefault,
 								{ctor: '[]'},
