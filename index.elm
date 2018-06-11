@@ -85,30 +85,32 @@ view model =
 frontBox : Html Msg
 frontBox =
   div [ box ]
-  [ Html.h1 [] [ text "Aimans Valkompass 2018" ]
-  , Html.h2 [] [ text "Gör Aimans valkompass och ta reda på vilket parti du borde rösta på valet 2018!" ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  , Html.h2 [ h2Style ] [ text "Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!" ]
   , button [ onClick Start, buttonStyle "green" ] [ text "Start" ]
   ]
 
 resultBox : List Ideology -> Html Msg
 resultBox result =
   div [ box ]
-  [ Html.h1 [] [ text "Aimans Valkompass 2018" ]
-  , Html.h2 [] [ text (resultToText result) ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  , Html.h2 [ h2Style ] [ text (resultToText result) ]
   , button [ onClick Redo, buttonStyle "green" ] [ text "Gör om" ]
   ]
 
 questionBox : Question -> Html Msg
 questionBox q =
   div [ box ]
-  [ Html.h1 [] [ text "Aimans Valkompass 2018" ]
-  , Html.h2 [] [ text q.question ]
-  , button
-    [ onClick (AddAnswer q.firstAnswer.ideology), buttonStyle "red" ]
-    [ text q.firstAnswer.text]
-  , button
-    [ onClick (AddAnswer q.secondAnswer.ideology), buttonStyle "blue" ]
-    [ text q.secondAnswer.text ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  , Html.h2 [ h2Style ] [ text q.question ]
+  , div [] [
+    button
+      [ onClick (AddAnswer q.firstAnswer.ideology), buttonStyle "red" ]
+      [ text q.firstAnswer.text]
+    , button
+      [ onClick (AddAnswer q.secondAnswer.ideology), buttonStyle "blue" ]
+      [ text q.secondAnswer.text ]
+    ]
   ]
 
 -- HELP FUNCTIONS
@@ -141,8 +143,11 @@ boxContainer =
 
 box =
   style
-    [ ("height", "50vh")
-    , ("width", "50vw")
+    [ ("width", "80vw")
+    , ("max-width", "800px")
+    , ("height", "80vh")
+    , ("padding", "20px")
+    , ("padding-bottom", "5vh")
     , ("background-color", "orange")
     , ("border", "1px solid black")
     , ("box-shadow", "0 0 50px black")
@@ -152,11 +157,14 @@ box =
     , ("top", "50%")
     , ("left", "50%")
     , ("transform", "translate(-50%, -50%)")
+    , ("display", "flex")
+    , ("flex-direction", "column")
+    , ("justify-content", "space-between")
     ]
 
 buttonStyle color =
   style
-    [ ("font-size", "2em")
+    [ ("font-size", "5vh")
     , ("border", "none")
     , ("background-color", color)
     , ("color", "ivory")
@@ -164,3 +172,14 @@ buttonStyle color =
     , ("margin", "15px")
     ]
 
+h1Style =
+  style
+    [ ("font-size", "5.5vh")
+    , ("flex", "1")
+    ]
+
+h2Style =
+  style
+    [ ("font-size", "4vh")
+    , ("flex", "5")
+    ]
