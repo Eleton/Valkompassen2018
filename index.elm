@@ -59,8 +59,8 @@ question3 : Question
 question3 =
   Question
     "På vinden så har du flera tidsskriftshållare fyllda med..."
-    (Answer Left "Bamse - Världens snällaste björn")
-    (Answer Right "Don Rosas samlade verk")
+    (Answer Left "Bamse")
+    (Answer Right "Joakim von Anka")
 
 question4 : Question
 question4 =
