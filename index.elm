@@ -78,7 +78,7 @@ red : String
 red = "rgb(234, 91, 104)"
 
 green : String
-green = "rgb(85, 160, 75)"
+green = "rgb(76, 175, 80)"
 
 
 -- UPDATE
@@ -202,7 +202,7 @@ resultToPercentage list =
 
 container = 
   style
-    [ ("background-color", "orange")
+    [ ("background-color", green)
     , ("height", "100vh")
     , ("display", "flex")
     , ("flex-direction", "column")
