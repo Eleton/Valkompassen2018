@@ -58,22 +58,28 @@ question2 =
 question3 : Question
 question3 =
   Question
-    "På vinden så har du flera tidsskriftshållare fyllda med..."
+    "Vem var din favoritseriefigur som barn?"
     (Answer Left "Bamse")
     (Answer Right "Joakim von Anka")
 
 question4 : Question
 question4 =
   Question
-    "Vilken sida tänkte du lägga din röst på i valet 9:e september?"
-    (Answer Left "Vänstern")
-    (Answer Right "Högern")
+    "Vilken är den största skandalen?"
+    (Answer Left "Lantisar")
+    (Answer Right "Toblerone")
 
 blue : String
-blue = "rgb(0, 106, 179)"
+--blue = "rgb(0, 106, 179)"
+blue = "rgb(87, 192, 232)"
 
 red : String
-red = "rgb(237, 27, 52)"
+--red = "rgb(237, 27, 52)"
+red = "rgb(234, 91, 104)"
+
+green : String
+green = "rgb(85, 160, 75)"
+
 
 -- UPDATE
 
@@ -89,7 +95,6 @@ update msg model =
   case msg of
     Reset -> model
     AddAnswer ideology ->
-      Debug.log (toString model.result)
       { model
       | result = ideology :: model.result
       , content = Maybe.withDefault [] (List.tail model.content)
@@ -114,7 +119,7 @@ frontBox =
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
   , Html.h2 [ h2Style ] [ text "Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!" ]
   , div [ boxContainer ]
-    [ button [ onClick Start, buttonStyle "green" ] [ text "Start" ]
+    [ button [ onClick Start, buttonStyle green ] [ text "Start" ]
     ]
   ]
 
@@ -125,7 +130,7 @@ resultBox result =
   , div [ boxContainer ] [(resultToBar result)]
   , Html.h2 [ h2Style ] [ text (resultToText result) ]
   , div [ boxContainer ]
-    [ button [ onClick Redo, buttonStyle "green" ] [ text "Gör om" ]
+    [ button [ onClick Redo, buttonStyle green ] [ text "Gör om" ]
     ]
   ]
 
@@ -153,13 +158,13 @@ resultToText list =
     [ Left, Left, Left, Left ] ->
       "Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S."
     [ Left, Left, Left, Right ] ->
-      "Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP kan ju vara en grej, men en proteströst på V kan också gå hem."
+      "Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar."
     [ Left, Left, Right, Right ] ->
       "Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra."
     [ Left, Right, Right, Right ] ->
-      "Du är lika blå som röda havet. C, M och Birgitta Ohlsson-L skulle kunna vara ett nyktert val för din del."
+      "Du är lika blå som röda havet. C, M och Birgitta Ohlsson-fallangen av L skulle kunna vara ett nyktert val för din del."
     [ Right, Right, Right, Right ] ->
-      "Du är uppenbart genomblå! Alliansen har allt som du någonsin kan önska."
+      "Du är uppenbart genomblå! Du kan välja fritt inom Alliansen, men kom ihåg - En stödröst på KD kan rädda Allianssamarbetet."
     _ ->
       "Data saknas för att kunna avgöra din politiska hållning."
 
@@ -185,7 +190,7 @@ sortIdeology list =
 
 container = 
   style
-    [ ("background-color", "purple")
+    [ ("background-color", "orange")
     , ("height", "100vh")
     , ("display", "flex")
     , ("flex-direction", "column")
@@ -206,10 +211,10 @@ box =
     , ("padding", "20px")
     , ("padding-top", "4vh")
     , ("padding-bottom", "3vh")
-    , ("background-color", "orange")
+    , ("background-color", "ivory")
     , ("border", "1px solid black")
     , ("box-shadow", "0 0 50px black")
-    , ("border-radius", "5px")
+    , ("border-radius", "40px")
     , ("text-align", "center")
     , ("position", "absolute")
     , ("top", "50%")
@@ -222,17 +227,17 @@ box =
 
 buttonStyle color =
   style
-    [ ("font-size", "5vh")
+    [ ("font-size", "4vh")
     , ("border", "4px solid black")
-    , ("background-color", "ivory")
-    , ("border-radius", "8px")
+    , ("background-color", color)
+    , ("border-radius", "40px")
     , ("margin", "15px")
     , ("padding", "10px 20px")
     , ("cursor", "pointer")
-    , ("min-width", "20vw")
-    , ("max-width", "40vw")
+    , ("width", "10em")
+    --, ("max-width", "40vw")
     , ("font-family", "Gotham-Bold,sans-serif")
-    , ("box-shadow", "inset 0px 0px 0px 10px " ++ color)
+    --, ("box-shadow", "inset 0px 0px 0px 10px " ++ color)
     ]
 
 h1Style =
@@ -253,8 +258,10 @@ h2Style =
 
 ideologyBar =
   style
-    [ ("width", "15em")
-    , ("height", "2em")
+    [ ("width", "10em")
+    , ("height", "calc(1em + 2.5vh)")
     , ("border", "1px solid black")
     , ("display", "flex")
+    , ("margin-top", "2vh")
+    , ("font-size", "4vh")
     ]

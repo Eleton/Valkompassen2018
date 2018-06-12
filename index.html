@@ -8234,17 +8234,25 @@ var _elm_lang$html$Html_Events$Options = F2(
 var _user$project$Main$ideologyBar = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '15em'},
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '10em'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '2em'},
+			_0: {ctor: '_Tuple2', _0: 'height', _1: 'calc(1em + 2.5vh)'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid black'},
 				_1: {
 					ctor: '::',
 					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin-top', _1: '2vh'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'font-size', _1: '4vh'},
+							_1: {ctor: '[]'}
+						}
+					}
 				}
 			}
 		}
@@ -8289,16 +8297,16 @@ var _user$project$Main$buttonStyle = function (color) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'font-size', _1: '5vh'},
+			_0: {ctor: '_Tuple2', _0: 'font-size', _1: '4vh'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'border', _1: '4px solid black'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'ivory'},
+					_0: {ctor: '_Tuple2', _0: 'background-color', _1: color},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '8px'},
+						_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '40px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'margin', _1: '15px'},
@@ -8310,23 +8318,11 @@ var _user$project$Main$buttonStyle = function (color) {
 									_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'min-width', _1: '20vw'},
+										_0: {ctor: '_Tuple2', _0: 'width', _1: '10em'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'max-width', _1: '40vw'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'Gotham-Bold,sans-serif'},
-												_1: {
-													ctor: '::',
-													_0: {
-														ctor: '_Tuple2',
-														_0: 'box-shadow',
-														_1: A2(_elm_lang$core$Basics_ops['++'], 'inset 0px 0px 0px 10px ', color)
-													},
-													_1: {ctor: '[]'}
-												}
-											}
+											_0: {ctor: '_Tuple2', _0: 'font-family', _1: 'Gotham-Bold,sans-serif'},
+											_1: {ctor: '[]'}
 										}
 									}
 								}
@@ -8358,7 +8354,7 @@ var _user$project$Main$box = _elm_lang$html$Html_Attributes$style(
 							_0: {ctor: '_Tuple2', _0: 'padding-bottom', _1: '3vh'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'orange'},
+								_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'ivory'},
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid black'},
@@ -8367,7 +8363,7 @@ var _user$project$Main$box = _elm_lang$html$Html_Attributes$style(
 										_0: {ctor: '_Tuple2', _0: 'box-shadow', _1: '0 0 50px black'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '5px'},
+											_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '40px'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
@@ -8424,7 +8420,7 @@ var _user$project$Main$boxContainer = _elm_lang$html$Html_Attributes$style(
 var _user$project$Main$container = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'purple'},
+		_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'orange'},
 		_1: {
 			ctor: '::',
 			_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
@@ -8443,8 +8439,9 @@ var _user$project$Main$container = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Main$red = 'rgb(237, 27, 52)';
-var _user$project$Main$blue = 'rgb(0, 106, 179)';
+var _user$project$Main$green = 'rgb(85, 160, 75)';
+var _user$project$Main$red = 'rgb(234, 91, 104)';
+var _user$project$Main$blue = 'rgb(87, 192, 232)';
 var _user$project$Main$Model = F2(
 	function (a, b) {
 		return {content: a, result: b};
@@ -8471,14 +8468,14 @@ var _user$project$Main$question2 = A3(
 	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Lathet'));
 var _user$project$Main$question3 = A3(
 	_user$project$Main$Question,
-	'På vinden så har du flera tidsskriftshållare fyllda med...',
+	'Vem var din favoritseriefigur som barn?',
 	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Bamse'),
 	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Joakim von Anka'));
 var _user$project$Main$question4 = A3(
 	_user$project$Main$Question,
-	'Vilken sida tänkte du lägga din röst på i valet 9:e september?',
-	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Vänstern'),
-	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Högern'));
+	'Vilken är den största skandalen?',
+	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Lantisar'),
+	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Toblerone'));
 var _user$project$Main$sortIdeology = function (list) {
 	var _p0 = list;
 	if (_p0.ctor === '[]') {
@@ -8521,7 +8518,7 @@ var _user$project$Main$resultToText = function (list) {
 										}
 									} else {
 										if (_p1._1._1._1._1.ctor === '[]') {
-											return 'Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP kan ju vara en grej, men en proteströst på V kan också gå hem.';
+											return 'Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar.';
 										} else {
 											break _v1_5;
 										}
@@ -8541,7 +8538,7 @@ var _user$project$Main$resultToText = function (list) {
 						}
 					} else {
 						if (((((_p1._1._1.ctor === '::') && (_p1._1._1._0.ctor === 'Right')) && (_p1._1._1._1.ctor === '::')) && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
-							return 'Du är lika blå som röda havet. C, M och Birgitta Ohlsson-L skulle kunna vara ett nyktert val för din del.';
+							return 'Du är lika blå som röda havet. C, M och Birgitta Ohlsson-fallangen av L skulle kunna vara ett nyktert val för din del.';
 						} else {
 							break _v1_5;
 						}
@@ -8551,7 +8548,7 @@ var _user$project$Main$resultToText = function (list) {
 				}
 			} else {
 				if (((((((_p1._1.ctor === '::') && (_p1._1._0.ctor === 'Right')) && (_p1._1._1.ctor === '::')) && (_p1._1._1._0.ctor === 'Right')) && (_p1._1._1._1.ctor === '::')) && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
-					return 'Du är uppenbart genomblå! Alliansen har allt som du någonsin kan önska.';
+					return 'Du är uppenbart genomblå! Du kan välja fritt inom Alliansen, men kom ihåg - En stödröst på KD kan rädda Allianssamarbetet.';
 				} else {
 					break _v1_5;
 				}
@@ -8687,7 +8684,7 @@ var _user$project$Main$resultBox = function (result) {
 										_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Redo),
 										_1: {
 											ctor: '::',
-											_0: _user$project$Main$buttonStyle('green'),
+											_0: _user$project$Main$buttonStyle(_user$project$Main$green),
 											_1: {ctor: '[]'}
 										}
 									},
@@ -8782,7 +8779,7 @@ var _user$project$Main$frontBox = A2(
 								_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Start),
 								_1: {
 									ctor: '::',
-									_0: _user$project$Main$buttonStyle('green'),
+									_0: _user$project$Main$buttonStyle(_user$project$Main$green),
 									_1: {ctor: '[]'}
 								}
 							},
@@ -8919,18 +8916,15 @@ var _user$project$Main$update = F2(
 			case 'Reset':
 				return model;
 			case 'AddAnswer':
-				return A2(
-					_elm_lang$core$Debug$log,
-					_elm_lang$core$Basics$toString(model.result),
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{
-							result: {ctor: '::', _0: _p2._0, _1: model.result},
-							content: A2(
-								_elm_lang$core$Maybe$withDefault,
-								{ctor: '[]'},
-								_elm_lang$core$List$tail(model.content))
-						}));
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						result: {ctor: '::', _0: _p2._0, _1: model.result},
+						content: A2(
+							_elm_lang$core$Maybe$withDefault,
+							{ctor: '[]'},
+							_elm_lang$core$List$tail(model.content))
+					});
 			case 'Start':
 				return _elm_lang$core$Native_Utils.update(
 					model,
