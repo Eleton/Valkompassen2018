@@ -8240,18 +8240,14 @@ var _user$project$Main$ideologyBar = _elm_lang$html$Html_Attributes$style(
 			_0: {ctor: '_Tuple2', _0: 'height', _1: 'calc(1em + 2.5vh)'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid black'},
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '4px solid black'},
 				_1: {
 					ctor: '::',
 					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin-top', _1: '2vh'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'font-size', _1: '4vh'},
-							_1: {ctor: '[]'}
-						}
+						_0: {ctor: '_Tuple2', _0: 'font-size', _1: '4vh'},
+						_1: {ctor: '[]'}
 					}
 				}
 			}
@@ -8357,7 +8353,7 @@ var _user$project$Main$box = _elm_lang$html$Html_Attributes$style(
 								_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'ivory'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid black'},
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid black'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'box-shadow', _1: '0 0 50px black'},
@@ -8473,7 +8469,7 @@ var _user$project$Main$question3 = A3(
 	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Joakim von Anka'));
 var _user$project$Main$question4 = A3(
 	_user$project$Main$Question,
-	'Vilken är den största skandalen?',
+	'Vilken är den största skandalen i modern tid?',
 	A2(_user$project$Main$Answer, _user$project$Main$Left, 'Lantisar'),
 	A2(_user$project$Main$Answer, _user$project$Main$Right, 'Toblerone'));
 var _user$project$Main$sortIdeology = function (list) {
@@ -8559,60 +8555,127 @@ var _user$project$Main$resultToText = function (list) {
 	} while(false);
 	return 'Data saknas för att kunna avgöra din politiska hållning.';
 };
+var _user$project$Main$resultToPercentage = function (list) {
+	var amountOfBlue = _elm_lang$core$List$length(
+		A2(
+			_elm_lang$core$List$filter,
+			function (x) {
+				return _elm_lang$core$Native_Utils.eq(x, _user$project$Main$Right);
+			},
+			list));
+	var amountOfRed = _elm_lang$core$List$length(
+		A2(
+			_elm_lang$core$List$filter,
+			function (x) {
+				return _elm_lang$core$Native_Utils.eq(x, _user$project$Main$Left);
+			},
+			list));
+	var percentageUnits = (100 / _elm_lang$core$List$length(list)) | 0;
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_elm_lang$core$Basics$toString(amountOfRed * percentageUnits),
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			'% röd/',
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Basics$toString(amountOfBlue * percentageUnits),
+				'% blå')));
+};
 var _user$project$Main$resultToBar = function (list) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Main$ideologyBar,
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin-top', _1: '2vh'},
+					_1: {ctor: '[]'}
+				}),
 			_1: {ctor: '[]'}
 		},
-		A2(
-			_elm_lang$core$List$map,
-			function (x) {
-				return _elm_lang$core$Native_Utils.eq(x, _user$project$Main$Left) ? A2(
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'font-size', _1: '3vh'},
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'Resultat: ',
+							_user$project$Main$resultToPercentage(list))),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$red},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
-										_1: {ctor: '[]'}
-									}
-								}
-							}),
+						_0: _user$project$Main$ideologyBar,
 						_1: {ctor: '[]'}
 					},
-					{ctor: '[]'}) : A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$blue},
-								_1: {
+					A2(
+						_elm_lang$core$List$map,
+						function (x) {
+							return _elm_lang$core$Native_Utils.eq(x, _user$project$Main$Left) ? A2(
+								_elm_lang$html$Html$div,
+								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
-										_1: {ctor: '[]'}
-									}
-								}
-							}),
-						_1: {ctor: '[]'}
-					},
-					{ctor: '[]'});
-			},
-			_user$project$Main$sortIdeology(list)));
+									_0: _elm_lang$html$Html_Attributes$style(
+										{
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$red},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}) : A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$style(
+										{
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'background-color', _1: _user$project$Main$blue},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'flex', _1: '1'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}),
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'});
+						},
+						_user$project$Main$sortIdeology(list))),
+				_1: {ctor: '[]'}
+			}
+		});
 };
 var _user$project$Main$Redo = {ctor: 'Redo'};
 var _user$project$Main$resultBox = function (result) {

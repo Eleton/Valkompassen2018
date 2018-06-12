@@ -65,7 +65,7 @@ question3 =
 question4 : Question
 question4 =
   Question
-    "Vilken är den största skandalen?"
+    "Vilken är den största skandalen i modern tid?"
     (Answer Left "Lantisar")
     (Answer Right "Toblerone")
 
@@ -170,12 +170,15 @@ resultToText list =
 
 resultToBar : List Ideology -> Html Msg
 resultToBar list =
-  div [ ideologyBar ] (List.map
-    (\x -> if x == Left
-      then div [ style [ ("background-color", red) , ("height", "100%"), ("flex", "1") ] ] []
-      else div [ style [ ("background-color", blue), ("height", "100%"), ("flex", "1") ] ] []
-      ) (sortIdeology list)
-    )
+  div [ style [ ("margin-top", "2vh") ] ]
+  [ div [ style [ ("font-size", "3vh") ] ] [ text ("Resultat: " ++ (resultToPercentage list)) ]
+  , div [ ideologyBar ] (List.map
+      (\x -> if x == Left
+        then div [ style [ ("background-color", red) , ("height", "100%"), ("flex", "1") ] ] []
+        else div [ style [ ("background-color", blue), ("height", "100%"), ("flex", "1") ] ] []
+        ) (sortIdeology list)
+      )
+  ]
 
 sortIdeology : List Ideology -> List Ideology
 sortIdeology list =
@@ -185,6 +188,15 @@ sortIdeology list =
       Left :: sortIdeology tail
     Right :: tail ->
       (sortIdeology tail) ++ [Right]
+
+resultToPercentage : List Ideology -> String
+resultToPercentage list =
+  let
+    percentageUnits = 100 // (List.length list)
+    amountOfRed = List.length (List.filter (\x -> x == Left) list)
+    amountOfBlue = List.length (List.filter (\x -> x == Right) list)
+  in
+    (toString (amountOfRed*percentageUnits)) ++ "% röd/" ++ (toString (amountOfBlue*percentageUnits)) ++ "% blå"
 
 -- STYLE
 
@@ -212,7 +224,7 @@ box =
     , ("padding-top", "4vh")
     , ("padding-bottom", "3vh")
     , ("background-color", "ivory")
-    , ("border", "1px solid black")
+    , ("border", "2px solid black")
     , ("box-shadow", "0 0 50px black")
     , ("border-radius", "40px")
     , ("text-align", "center")
@@ -260,8 +272,7 @@ ideologyBar =
   style
     [ ("width", "10em")
     , ("height", "calc(1em + 2.5vh)")
-    , ("border", "1px solid black")
+    , ("border", "4px solid black")
     , ("display", "flex")
-    , ("margin-top", "2vh")
     , ("font-size", "4vh")
     ]
