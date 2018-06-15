@@ -71,14 +71,19 @@ question4 =
 
 blue : String
 --blue = "rgb(0, 106, 179)"
-blue = "rgb(87, 192, 232)"
+--blue = "rgb(87, 192, 232)"
+blue = "hsl(197, 75%, 60%)"
 
 red : String
 --red = "rgb(237, 27, 52)"
-red = "rgb(234, 91, 104)"
+--red = "rgb(234, 91, 104)"
+red = "hsl(0, 75%, 60%)"
 
 green : String
-green = "rgb(76, 175, 80)"
+--green = "rgb(76, 175, 80)"
+green = "hsl(115, 50%, 65%)"
+--green = "hsl(119, 20%, 60%)"
+--green = "#e48552"
 
 
 -- UPDATE
@@ -117,7 +122,7 @@ frontBox : Html Msg
 frontBox =
   div [ box ]
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
-  , Html.h2 [ h2Style ] [ text "Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!" ]
+  , Html.p [ paragraphStyle ] [ text "Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!" ]
   , div [ boxContainer ]
     [ button [ onClick Start, buttonStyle green ] [ text "Start" ]
     ]
@@ -128,7 +133,7 @@ resultBox result =
   div [ box ]
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
   , div [ boxContainer ] [(resultToBar result)]
-  , Html.h2 [ h2Style ] [ text (resultToText result) ]
+  , Html.p [ paragraphStyle ] [ text (resultToText result) ]
   , div [ boxContainer ]
     [ button [ onClick Redo, buttonStyle green ] [ text "Gör om" ]
     ]
@@ -138,7 +143,7 @@ questionBox : Question -> Html Msg
 questionBox q =
   div [ box ]
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
-  , Html.h2 [ h2Style ] [ text q.question ]
+  , Html.p [ paragraphStyle ] [ text q.question ]
   , div [] [
     button
       [ onClick (AddAnswer q.firstAnswer.ideology), buttonStyle red ]
@@ -158,7 +163,7 @@ resultToText list =
     [ Left, Left, Left, Left ] ->
       "Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S."
     [ Left, Left, Left, Right ] ->
-      "Du är mestadels röd, men verkar ändå besitta en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar."
+      "Du är mestadels röd, men besitter nog ändå en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar."
     [ Left, Left, Right, Right ] ->
       "Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra."
     [ Left, Right, Right, Right ] ->
@@ -171,7 +176,7 @@ resultToText list =
 resultToBar : List Ideology -> Html Msg
 resultToBar list =
   div [ style [ ("margin-top", "2vh") ] ]
-  [ div [ style [ ("font-size", "3vh") ] ] [ text ("Resultat: " ++ (resultToPercentage list)) ]
+  [ div [ style [ ("font-size", "3vh"), ("font-family", "arial,sans-serif") ] ] [ text ("Resultat: " ++ (resultToPercentage list)) ]
   , div [ ideologyBar ] (List.map
       (\x -> if x == Left
         then div [ style [ ("background-color", red) , ("height", "100%"), ("flex", "1") ] ] []
@@ -224,8 +229,8 @@ box =
     , ("padding-top", "4vh")
     , ("padding-bottom", "3vh")
     , ("background-color", "ivory")
-    , ("border", "2px solid black")
-    , ("box-shadow", "0 0 50px black")
+    , ("border", "2px solid #222")
+    , ("box-shadow", "0 0 50px #222")
     , ("border-radius", "40px")
     , ("text-align", "center")
     , ("position", "absolute")
@@ -235,14 +240,15 @@ box =
     , ("display", "flex")
     , ("flex-direction", "column")
     , ("justify-content", "space-between")
+    , ("color", "#222")
     ]
 
 buttonStyle color =
   style
     [ ("font-size", "4vh")
-    , ("border", "4px solid black")
+    --, ("border", "4px solid black")
     , ("background-color", color)
-    , ("border-radius", "40px")
+    , ("border-radius", "80px")
     , ("margin", "15px")
     , ("padding", "10px 20px")
     , ("cursor", "pointer")
@@ -250,6 +256,7 @@ buttonStyle color =
     --, ("max-width", "40vw")
     , ("font-family", "Gotham-Bold,sans-serif")
     --, ("box-shadow", "inset 0px 0px 0px 10px " ++ color)
+    , ("color", "ivory")
     ]
 
 h1Style =
@@ -261,7 +268,7 @@ h1Style =
     , ("margin", "0px")
     ]
 
-h2Style =
+paragraphStyle =
   style
     [ ("font-size", "3.5vh")
     , ("flex", "5")
@@ -272,7 +279,7 @@ ideologyBar =
   style
     [ ("width", "10em")
     , ("height", "calc(1em + 2.5vh)")
-    , ("border", "4px solid black")
+    , ("border", "4px solid #222")
     , ("display", "flex")
     , ("font-size", "4vh")
     ]
