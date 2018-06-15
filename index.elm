@@ -72,7 +72,8 @@ question4 =
 blue : String
 --blue = "rgb(0, 106, 179)"
 --blue = "rgb(87, 192, 232)"
-blue = "hsl(197, 75%, 60%)"
+--blue = "hsl(197, 75%, 60%)"
+blue = "hsl(191, 100%, 45%)"
 
 red : String
 --red = "rgb(237, 27, 52)"
@@ -246,7 +247,7 @@ box =
 buttonStyle color =
   style
     [ ("font-size", "4vh")
-    --, ("border", "4px solid black")
+    , ("border", "none")
     , ("background-color", color)
     , ("border-radius", "80px")
     , ("margin", "15px")
