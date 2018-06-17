@@ -8231,6 +8231,86 @@ var _elm_lang$html$Html_Events$Options = F2(
 	function (a, b) {
 		return {stopPropagation: a, preventDefault: b};
 	});
+var _user$project$Main$footerButton = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#222'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'color', _1: 'ivory'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid ivory'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'font-size', _1: '1.4vh'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '10px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'outline', _1: 'none'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Main$footer = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '0'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'width', _1: 'calc(80vw + 40px)'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '5vh'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#222'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '40px 40px 0px 0px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: 'ivory'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'font-size', _1: '1.8vh'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'flex-direction', _1: 'column'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'justify-content', _1: 'space-around'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _user$project$Main$ideologyBar = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
@@ -8321,7 +8401,11 @@ var _user$project$Main$buttonStyle = function (color) {
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'color', _1: 'ivory'},
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'outline', _1: 'none'},
+													_1: {ctor: '[]'}
+												}
 											}
 										}
 									}
@@ -8357,43 +8441,35 @@ var _user$project$Main$box = _elm_lang$html$Html_Attributes$style(
 								_0: {ctor: '_Tuple2', _0: 'background-color', _1: 'ivory'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #222'},
+									_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '40px'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'box-shadow', _1: '0 0 50px #222'},
+										_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'border-radius', _1: '40px'},
+											_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
+												_0: {ctor: '_Tuple2', _0: 'top', _1: '50%'},
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+													_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'top', _1: '50%'},
+														_0: {ctor: '_Tuple2', _0: 'transform', _1: 'translate(-50%, -50%)'},
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
+															_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 															_1: {
 																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'transform', _1: 'translate(-50%, -50%)'},
+																_0: {ctor: '_Tuple2', _0: 'flex-direction', _1: 'column'},
 																_1: {
 																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+																	_0: {ctor: '_Tuple2', _0: 'justify-content', _1: 'space-between'},
 																	_1: {
 																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'flex-direction', _1: 'column'},
-																		_1: {
-																			ctor: '::',
-																			_0: {ctor: '_Tuple2', _0: 'justify-content', _1: 'space-between'},
-																			_1: {
-																				ctor: '::',
-																				_0: {ctor: '_Tuple2', _0: 'color', _1: '#222'},
-																				_1: {ctor: '[]'}
-																			}
-																		}
+																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#222'},
+																		_1: {ctor: '[]'}
 																	}
 																}
 															}
@@ -8446,9 +8522,9 @@ var _user$project$Main$container = _elm_lang$html$Html_Attributes$style(
 	});
 var _user$project$Main$red = 'hsl(0, 75%, 60%)';
 var _user$project$Main$blue = 'hsl(191, 100%, 45%)';
-var _user$project$Main$Model = F2(
-	function (a, b) {
-		return {content: a, result: b};
+var _user$project$Main$Model = F3(
+	function (a, b, c) {
+		return {content: a, result: b, cookieDisplay: c};
 	});
 var _user$project$Main$Question = F3(
 	function (a, b, c) {
@@ -8516,13 +8592,13 @@ var _user$project$Main$resultToText = function (list) {
 								if (_p1._1._1._1.ctor === '::') {
 									if (_p1._1._1._1._0.ctor === 'Left') {
 										if (_p1._1._1._1._1.ctor === '[]') {
-											return 'Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S.';
+											return 'Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller möjligtvis S.';
 										} else {
 											break _v1_5;
 										}
 									} else {
 										if (_p1._1._1._1._1.ctor === '[]') {
-											return 'Du är mestadels röd, men besitter nog ändå en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar.';
+											return 'Du är mestadels röd, men besitter ändå en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar.';
 										} else {
 											break _v1_5;
 										}
@@ -8532,7 +8608,7 @@ var _user$project$Main$resultToText = function (list) {
 								}
 							} else {
 								if (((_p1._1._1._1.ctor === '::') && (_p1._1._1._1._0.ctor === 'Right')) && (_p1._1._1._1._1.ctor === '[]')) {
-									return 'Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra.';
+									return 'Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men Reinfeldt-M går också bra.';
 								} else {
 									break _v1_5;
 								}
@@ -8796,7 +8872,69 @@ var _user$project$Main$view = function (model) {
 						{ctor: '[]'},
 						{ctor: '[]'}),
 					_elm_lang$core$List$head(model.content)),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: model.cookieDisplay ? A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Main$boxContainer,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Main$footer,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Den här sidan använder inte kakor.'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Inget händer om du trycker på den här knappen:  '),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$button,
+														{
+															ctor: '::',
+															_0: _user$project$Main$footerButton,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('Jag förstår.'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}) : A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
@@ -8819,7 +8957,7 @@ var _user$project$Main$frontBox = A2(
 			},
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('Aimans Valkompass 2018'),
+				_0: _elm_lang$html$Html$text('Aimans Valkompass'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {
@@ -8833,7 +8971,7 @@ var _user$project$Main$frontBox = A2(
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!'),
+					_0: _elm_lang$html$Html$text('Gör Aimans Valkompass™ och ta reda på vilket parti du borde rösta på i valet 2018!'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -8980,10 +9118,11 @@ var _user$project$Main$content = {
 		}
 	}
 };
-var _user$project$Main$model = A2(
+var _user$project$Main$model = A3(
 	_user$project$Main$Model,
 	_user$project$Main$content,
-	{ctor: '[]'});
+	{ctor: '[]'},
+	true);
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p2 = msg;
@@ -9007,13 +9146,15 @@ var _user$project$Main$update = F2(
 						content: A2(
 							_elm_lang$core$Maybe$withDefault,
 							{ctor: '[]'},
-							_elm_lang$core$List$tail(model.content))
+							_elm_lang$core$List$tail(model.content)),
+						cookieDisplay: false
 					});
 			default:
-				return A2(
+				return A3(
 					_user$project$Main$Model,
 					_user$project$Main$content,
-					{ctor: '[]'});
+					{ctor: '[]'},
+					false);
 		}
 	});
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(

@@ -11,10 +11,11 @@ main =
 type alias Model =
   { content : List (Html Msg)
   , result : List Ideology
+  , cookieDisplay : Bool
   }
 
 model : Model
-model = Model content []
+model = Model content [] True
 
 
 content : List (Html Msg)
@@ -106,8 +107,8 @@ update msg model =
       , content = Maybe.withDefault [] (List.tail model.content)
       }
     Start ->
-      { model | content = Maybe.withDefault [] (List.tail model.content) }
-    Redo -> Model content []
+      { model | content = Maybe.withDefault [] (List.tail model.content), cookieDisplay = False }
+    Redo -> Model content [] False
 
 
 -- VIEW
@@ -117,13 +118,22 @@ view model =
   div [ container ]
   [ resultBox model.result
   , Maybe.withDefault (div [] []) (List.head model.content)
+  , if model.cookieDisplay then div [ boxContainer ]
+    [ div [ footer ]
+      [ div [] [ text "Den här sidan använder inte kakor." ]
+      , div []
+        [ text "Inget händer om du trycker på den här knappen:  "
+        , button [ footerButton ] [ text "Jag förstår."]
+        ]
+      ]
+    ] else div [] []
   ]
 
 frontBox : Html Msg
 frontBox =
   div [ box ]
-  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
-  , Html.p [ paragraphStyle ] [ text "Gör Aimans Valkompass 2018 och ta reda på vilket parti du borde rösta på i valet 2018!" ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass" ]
+  , Html.p [ paragraphStyle ] [ text "Gör Aimans Valkompass™ och ta reda på vilket parti du borde rösta på i valet 2018!" ]
   , div [ boxContainer ]
     [ button [ onClick Start, buttonStyle green ] [ text "Start" ]
     ]
@@ -162,11 +172,11 @@ resultToText : List Ideology -> String
 resultToText list =
   case (sortIdeology list) of
     [ Left, Left, Left, Left ] ->
-      "Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller kanske rent av S."
+      "Du är helt klart vänster, kamrat! Aimans Valkompass föreslår därför att du röstar på ett parti på den vänstra halvan av spektrumet, till exempel V, MP eller möjligtvis S."
     [ Left, Left, Left, Right ] ->
-      "Du är mestadels röd, men besitter nog ändå en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar."
+      "Du är mestadels röd, men besitter ändå en respekt för marknadens läkande krafter. S och MP ligger nära till hands. Man kan rösta V också, men det kanske man inte ska skylta med om man umgås i dina kretsar."
     [ Left, Left, Right, Right ] ->
-      "Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men M går också bra."
+      "Det är omöjligt att placera dig helt klockrent på Höger/Vänster-skalan. Du svajar helt enkelt för mycket i din ideologi. Statistiskt sett så borde du rösta på S, men Reinfeldt-M går också bra."
     [ Left, Right, Right, Right ] ->
       "Du är lika blå som röda havet. C, M och Birgitta Ohlsson-fallangen av L skulle kunna vara ett nyktert val för din del."
     [ Right, Right, Right, Right ] ->
@@ -230,8 +240,8 @@ box =
     , ("padding-top", "4vh")
     , ("padding-bottom", "3vh")
     , ("background-color", "ivory")
-    , ("border", "2px solid #222")
-    , ("box-shadow", "0 0 50px #222")
+    --, ("border", "2px solid #222")
+    --, ("box-shadow", "0 0 50px #222")
     , ("border-radius", "40px")
     , ("text-align", "center")
     , ("position", "absolute")
@@ -258,6 +268,7 @@ buttonStyle color =
     , ("font-family", "Gotham-Bold,sans-serif")
     --, ("box-shadow", "inset 0px 0px 0px 10px " ++ color)
     , ("color", "ivory")
+    , ("outline", "none")
     ]
 
 h1Style =
@@ -283,4 +294,32 @@ ideologyBar =
     , ("border", "4px solid #222")
     , ("display", "flex")
     , ("font-size", "4vh")
+    ]
+
+footer =
+  style
+    [ ("position", "fixed")
+    , ("bottom", "0")
+    , ("width", "calc(80vw + 40px)")
+    , ("height", "5vh")
+    , ("background-color", "#222")
+    , ("border-radius", "40px 40px 0px 0px")
+    , ("text-align", "center")
+    , ("color", "ivory")
+    , ("font-size", "1.8vh")
+    --, ("padding", "8px")
+    , ("display", "flex")
+    , ("flex-direction", "column")
+    , ("justify-content", "space-around")
+    ]
+
+footerButton =
+  style
+    [ ("background-color", "#222")
+    , ("color", "ivory")
+    , ("border", "1px solid ivory")
+    , ("font-size", "1.4vh")
+    , ("border-radius", "10px")
+    , ("outline", "none")
+    , ("cursor", "pointer")
     ]
