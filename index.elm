@@ -118,7 +118,7 @@ view model =
   div [ container ]
   [ resultBox model.result
   , Maybe.withDefault (div [] []) (List.head model.content)
-  , if model.cookieDisplay then div [ boxContainer ]
+  {-, if model.cookieDisplay then div [ boxContainer ]
     [ div [ footer ]
       [ div [] [ text "Den här sidan använder inte kakor." ]
       , div []
@@ -126,7 +126,7 @@ view model =
         , button [ footerButton ] [ text "Jag förstår."]
         ]
       ]
-    ] else div [] []
+    ] else div [] [] -}
   ]
 
 frontBox : Html Msg
@@ -134,6 +134,11 @@ frontBox =
   div [ box ]
   [ Html.h1 [ h1Style ] [ text "Aimans Valkompass" ]
   , Html.p [ paragraphStyle ] [ text "Gör Aimans Valkompass™ och ta reda på vilket parti du borde rösta på i valet 2018!" ]
+  , div [ paragraphStyle ]
+    [ Html.p [ style [("margin", "0")] ] [ text "Observera att denna sida inte använder kakor."]
+    , Html.p [ style [("margin", "0")] ] [ text "Ingenting kommer hända om du trycker på följande knapp:"]
+    , button [ buttonStyle "ivory", style [("color", "#222"), ("border", "1px solid #222")] ] [ text "Jag förstår." ]
+    ]
   , div [ boxContainer ]
     [ button [ onClick Start, buttonStyle green ] [ text "Start" ]
     ]
@@ -298,9 +303,9 @@ ideologyBar =
 
 footer =
   style
-    [ ("position", "fixed")
-    , ("bottom", "0")
-    , ("width", "calc(80vw + 40px)")
+    [ --("position", "fixed")
+    --, ("bottom", "0")
+     ("width", "calc(80vw + 0px)")
     , ("height", "5vh")
     , ("background-color", "#222")
     , ("border-radius", "40px 40px 0px 0px")
