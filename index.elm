@@ -138,7 +138,7 @@ frontBox =
 resultBox : List Ideology -> Html Msg
 resultBox result =
   div [ box ]
-  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass" ]
   , div [ boxContainer ] [(resultToBar result)]
   , Html.p [ paragraphStyle ] [ text (resultToText result) ]
   , div [ boxContainer ]
@@ -149,7 +149,7 @@ resultBox result =
 questionBox : Question -> Html Msg
 questionBox q =
   div [ box ]
-  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass 2018" ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass" ]
   , Html.p [ paragraphStyle ] [ text q.question ]
   , div [] [
     button
@@ -292,30 +292,3 @@ ideologyBar =
     , ("font-size", "4vh")
     ]
 
-footer =
-  style
-    [ --("position", "fixed")
-    --, ("bottom", "0")
-     ("width", "calc(80vw + 0px)")
-    , ("height", "5vh")
-    , ("background-color", "#222")
-    , ("border-radius", "40px 40px 0px 0px")
-    , ("text-align", "center")
-    , ("color", "ivory")
-    , ("font-size", "1.8vh")
-    --, ("padding", "8px")
-    , ("display", "flex")
-    , ("flex-direction", "column")
-    , ("justify-content", "space-around")
-    ]
-
-footerButton =
-  style
-    [ ("background-color", "#222")
-    , ("color", "ivory")
-    , ("border", "1px solid ivory")
-    , ("font-size", "1.4vh")
-    , ("border-radius", "10px")
-    , ("outline", "none")
-    , ("cursor", "pointer")
-    ]
