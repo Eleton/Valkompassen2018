@@ -12,10 +12,11 @@ type alias Model =
   { content : List (Html Msg)
   , result : List Ideology
   , cookieDisplay : Bool
+  , sd : Bool
   }
 
 model : Model
-model = Model content [] True
+model = Model content [] True False
 
 
 content : List (Html Msg)
@@ -87,6 +88,9 @@ green = "hsl(115, 50%, 65%)"
 --green = "hsl(119, 20%, 60%)"
 --green = "#e48552"
 
+yellow : String
+yellow = "hsl(50, 100%, 50%)"
+
 
 -- UPDATE
 
@@ -95,6 +99,7 @@ type Msg
   | AddAnswer Ideology
   | Start
   | Redo
+  | SD
 
 
 update : Msg -> Model -> Model
@@ -108,7 +113,8 @@ update msg model =
       }
     Start ->
       { model | content = Maybe.withDefault [] (List.tail model.content), cookieDisplay = False }
-    Redo -> Model content [] False
+    Redo -> Model content [] False False
+    SD -> { model | sd = True }
 
 
 -- VIEW
@@ -116,7 +122,7 @@ update msg model =
 view : Model -> Html Msg
 view model =
   div [ container ]
-  [ resultBox model.result
+  [ if model.sd == False then resultBox model.result else sdBox
   , Maybe.withDefault (div [] []) (List.head model.content)
   ]
 
@@ -142,7 +148,22 @@ resultBox result =
   , div [ boxContainer ] [(resultToBar result)]
   , Html.p [ paragraphStyle ] [ text (resultToText result) ]
   , div [ boxContainer ]
+    [ button [ onClick SD, buttonStyle yellow, style [("color", "#222")] ] [ text "Jag är missnöjd." ]
+    ]
+  , div [ boxContainer ]
     [ button [ onClick Redo, buttonStyle green ] [ text "Gör om" ]
+    ]
+  ]
+
+sdBox : Html Msg
+sdBox =
+  div [ box ]
+  [ Html.h1 [ h1Style ] [ text "Aimans Valkompass" ]
+  , div [ boxContainer ] [ Html.img [ src "jimmie.jpg", jimmieImg ] [] ]
+  --, div [ boxContainer ] [(resultToBar result)]
+  , Html.p [ paragraphStyle ] [ text "Jimmie Åkesson, tjala lala laaa~" ]
+  , div [ boxContainer ]
+    [ button [ onClick Redo, buttonStyle yellow ] [ text "Gör om" ]
     ]
   ]
 
@@ -287,8 +308,16 @@ ideologyBar =
   style
     [ ("width", "10em")
     , ("height", "calc(1em + 2.5vh)")
-    , ("border", "4px solid #222")
     , ("display", "flex")
     , ("font-size", "4vh")
+    , ("margin-top", "4px")
+    ]
+
+jimmieImg =
+  style
+    [ ("width", "calc(10vw + 10vh)")
+    , ("height", "calc(10vw + 10vh)")
+    , ("border-radius", "50%")
+    , ("margin-top", "10px")
     ]
 
